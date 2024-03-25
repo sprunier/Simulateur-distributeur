@@ -8,20 +8,17 @@ class Distributeur {
 
         void LancerTransaction() {
             if (typeTransaction == "Retrait") {   
-                Retrait* transac = new Retrait(montant, getIdClient());
-                transac->executer();
-                delete transac;
+                Retrait transac(montant, getIdClient());
+                transac.executer();
             }
             else if (typeTransaction == "Depot") {
-                Depot* transac = new Depot(montant, getIdClient());
-                transac->executer();
-                delete transac;
+                Depot transac(montant, getIdClient());
+                transac.executer();
             }
             else {
                 throw std::invalid_argument("Type de transaction invalide");
             }
         }
-
         
     private:
         std::string numeroCarte;

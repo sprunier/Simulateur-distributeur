@@ -25,19 +25,22 @@ float random_amount() {
 }
 
 int main() {
+    //Lit les données de carte des clients souhaitant retirer ou déposer de l'argent
     std::ifstream fichier_entree("RandomUser.json");
     nlohmann::json donnees_json;
     fichier_entree >> donnees_json;
     fichier_entree.close();
     
+    //Créé un vecteur de threads pour lancer les transactions
     std::vector<std::thread> threads;
+    //Créé un vecteur de pointeurs de Distributeur pour stocker les objets Distributeur
     std::vector<Distributeur*> distribs;
 
-    for (const auto info : donnees_json["Utilisateurs"]) {
+    for (const auto carte : donnees_json["Utilisateurs"]) {
         std::string operation = random_operation();
         float amount = random_amount();
-        std::string numero_carte = info["numero_carte"];
-        int cvv = info["cvv"];
+        std::string numero_carte = carte["numero_carte"];
+        int cvv = carte["cvv"];
 
         Distributeur* distrib = new Distributeur(numero_carte, cvv, amount, operation);
         distribs.push_back(distrib);
