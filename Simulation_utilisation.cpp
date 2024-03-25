@@ -52,8 +52,8 @@ int main() {
     for (auto* distrib : distribs) {
         delete distrib;
     }
-    std::cout << "Toutes les transactions ont été effectuées avec succès" << std::endl;
-    std::cout<<"Appuyez sur Entrée pour quitter"<<std::endl;
+    std::cout << "Toutes les transactions ont ete effectuees avec succes" << std::endl;
+    std::cout<<"Appuyez sur Entree pour quitter"<<std::endl;
     std::cin.get();
     return 0;
 }

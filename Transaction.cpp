@@ -11,9 +11,8 @@
 class Transaction{
     
     public:
-        Transaction(const float& montantentry,const int& id_cliententry):montant(montantentry),id_client(id_cliententry),montant_centime(round(montant * 100)){
-            //std::cout<<montant_centime<<" "<< montant<<std::endl;
-        }
+        //Constructeur de la classe Transaction
+        Transaction(const float& montantentry,const int& id_cliententry):montant(montantentry),id_client(id_cliententry),montant_centime(round(montant * 100)){}
         ~Transaction(){}
         virtual void executer() = 0;
          
@@ -29,7 +28,7 @@ class Transaction{
             //Obtient le temps actuel en format ISO 8601
             auto maintenant=std::chrono::system_clock::now();
             std::time_t temps_maintenant= std::chrono::system_clock::to_time_t(maintenant);
-            std::tm* temps_maintenant_tm=std::gmtime(&temps_maintenant);
+            std::tm *temps_maintenant_tm=std::gmtime(&temps_maintenant);
             std::stringstream ss;
             ss << std::put_time(temps_maintenant_tm, "%FT%TZ");
             return ss.str();
@@ -102,7 +101,7 @@ class Transaction{
                             }
                         }
                         else{
-                            throw std::runtime_error("Impossbile d'actualiser le solde d'une transaction non définie.");
+                            throw std::runtime_error("Impossbile d'actualiser le solde d'une transaction non definie.");
                         }
 
                         //Crée un dictionnaire pour stocker les informations du client
@@ -124,7 +123,7 @@ class Transaction{
                 }
             }
             //Si le client n'est pas trouvé
-            throw std::runtime_error("Client non trouvé dans la base de données.");
+            throw std::runtime_error("Client non trouve dans la base de donnees.");
         }
 };
 
@@ -139,11 +138,11 @@ class Depot: public Transaction{
             try{
                 std::map<std::string,std::string> Infos = actualiserSolde();
                 sauvegarderTransaction();          
-                std::cout<<"Merci "<<Infos["nom"]<<", dépôt effectué avec succès!"<<std::endl;
-                std::cout<<"Votre nouveau solde est : "<<Infos["nouveausolde"]<<"€"<<std::endl<<std::endl;
+                std::cout<<"Merci "<<Infos["nom"]<<", depot effectue avec succes!"<<std::endl;
+                std::cout<<"Votre nouveau solde est : "<<Infos["nouveausolde"]<<" euros"<<std::endl<<std::endl;
             }
             catch(...){
-                std::cout<<"Erreur lors de l'exécution du dépôt."<<std::endl;
+                std::cout<<"Erreur lors de l'execution du depot."<<std::endl;
             }
             
         }
@@ -161,15 +160,15 @@ class Retrait: public Transaction{
                 std::map<std::string,std::string> Infos = actualiserSolde(); 
                 //Gère le cas où le solde est insuffisant 
                 if (Infos["nouveausolde"]=="Solde insuffisant"){
-                    std::cout<<"Désolé "<<Infos["nom"]<<", votre solde est insuffisant pour effectuer ce retrait."<<std::endl<<std::endl;
+                    std::cout<<"Desole "<<Infos["nom"]<<", votre solde est insuffisant pour effectuer ce retrait et vous n'etes pas autorise a etre a decouvert."<<std::endl<<std::endl;
                     return;
                 }
                 sauvegarderTransaction();         
-                std::cout<<"Merci "<<Infos["nom"]<<", retrait effectué avec succès!"<<std::endl;
-                std::cout<<"Votre nouveau solde est : "<<Infos["nouveausolde"]<<"€"<<std::endl<<std::endl;
+                std::cout<<"Merci "<<Infos["nom"]<<", retrait effectue avec succes!"<<std::endl;
+                std::cout<<"Votre nouveau solde est : "<<Infos["nouveausolde"]<<" euros"<<std::endl<<std::endl;
             }
             catch(...){
-                std::cout<<"Erreur lors de l'exécution du retrait."<<std::endl;
+                std::cout<<"Erreur lors de l'execution du retrait."<<std::endl;
             }
         }
 };
