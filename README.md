@@ -32,3 +32,5 @@ On trouve aussi les fichiers JSON:
 ## Exécution du projet
 Pour exécuter le projet, une version build en .exe est présente dans le dépôt: `Simulation_utilisation.exe`.
 Sinon, il faudra build et exécuter le fichier `Simulation_utilisation.cpp`
+
+La console affichera le résultat des transactions fictives, les modifications de solde et l'enregisrement des transactions seront effectués dans le fichier `BankDB.json`.
