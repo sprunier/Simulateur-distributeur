@@ -15,7 +15,7 @@ Le projet est structuré comme suit :
 - `Distributeur.cpp` : Simule un distributeur automatique qui interagit avec l'utilisateur.
   - Classe utilisée pour faire le lien entre le numero de carte/code de carte avec l'identifiant du client et créer une transaction `Depot`/`Retrait` en fonction d'un paramètre.
 
-- `Transaction.cpp` : Contient les classes `Depot` et `Retrait` qui héritent de la classe `Transaction`. Ces classes permettent d'exécuter des transactions bancaires.
+- `Transaction.cpp` : Contient les classes `Depot` et `Retrait` qui héritent de la classe `Transaction`. Ces classes permettent d'enregistrer les modifications des soldes clients et de sauvegarder les transactions pour en garder une trace.
   - Fonctions virtuelles: Les méthodes getTypeTransaction et executer sont surchargées pour remplacer les méthodes virtuelles de la classe de base.
   - Constructeur: Les classes Retrait et Depot ont un constructeur qui prend deux arguments et les passe à la classe de base Transaction via une liste d'initialisation de membre.
   - Gestion des exceptions: La méthode executer utilise un bloc try/catch pour gérer les exceptions.
@@ -26,5 +26,5 @@ Le projet est structuré comme suit :
 - `json.hpp` : Fournit des fonctionnalités pour travailler avec des fichiers JSON. (Provient de la librairie de nlohmann [https://github.com/nlohmann/json]
 
 On trouve aussi les fichiers JSON:
-- `BankDB.json` : Contient les informations fictives des clients de la banque.
+- `BankDB.json` : Contient les informations fictives des clients de la banque. Contient également un eneregistrement des transactions effectuées.
 - `RandomUser.json` : Contient les informations de carte bancaire de clients, permet de simuler un client qui vient retirer/déposer de l'argent.
