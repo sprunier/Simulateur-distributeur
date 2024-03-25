@@ -28,3 +28,7 @@ Le projet est structuré comme suit :
 On trouve aussi les fichiers JSON:
 - `BankDB.json` : Contient les informations fictives des clients de la banque. Contient également un eneregistrement des transactions effectuées.
 - `RandomUser.json` : Contient les informations de carte bancaire de clients, permet de simuler un client qui vient retirer/déposer de l'argent.
+
+## Exécution du projet
+Pour exécuter le projet, une version build en .exe est présente dans le dépôt: `Simulation_utilisation.exe`.
+Sinon, il faudra build et exécuter le fichier `Simulation_utilisation.cpp`
