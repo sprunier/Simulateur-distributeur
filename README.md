@@ -21,7 +21,7 @@ Le projet est structuré comme suit :
   - Gestion des exceptions: La méthode executer utilise un bloc try/catch pour gérer les exceptions.
     
 - `DBLock.cpp` : Gère les accès concurrents à la base de données.
-  - Initialize un mutex static qui sera commun à l'utilisation de toutes les classes ayant besoin d'accéder à des fichiers. Ceci dans le but d'éviter les interférences entre les threads lors de la lecture/écriture dans les bases de données.
+  - Initialise un mutex static qui sera commun à l'utilisation de toutes les classes ayant besoin d'accéder à des fichiers. Ceci dans le but d'éviter les interférences entre les threads lors de la lecture/écriture dans les bases de données.
   
 - `json.hpp` : Fournit des fonctionnalités pour travailler avec des fichiers JSON. (Provient de la librairie de nlohmann [https://github.com/nlohmann/json]
 
